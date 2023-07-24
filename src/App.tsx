@@ -14,7 +14,7 @@ function App(): JSX.Element {
   const squaresRender: JSX.Element[] = [];
 
   for (const squareElement of squaresData) {
-    squaresRender.push(<SquareElement square={squareElement} />);
+    squaresRender.push(<SquareElementComponent square={squareElement} />);
   }
   console.log(squaresRender);
 
@@ -55,7 +55,7 @@ interface SquareElementProps {
 }
 //-------------------------------------------------------------
 
-function SquareElement(props: SquareElementProps) {
+function SquareElementComponent(props: SquareElementProps) {
   return (
     <div
       className={
