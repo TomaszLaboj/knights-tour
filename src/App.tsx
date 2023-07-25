@@ -11,6 +11,18 @@ const columns: number[] = [1, 2, 3, 4, 5, 6, 7, 8];
 function App(): JSX.Element {
   const SquaresData: SquareElement[] = [];
   createArray(SquaresData);
+  interface SquareProps{
+    square: SquareElement
+  }
+  const Board = (props:SquareProps) => {
+    return(
+      <>
+    <div>{props.square.piece}</div>
+    <div>{props.square.moveCounter}</div>
+      </>
+    )
+  }
+
   
   
   
