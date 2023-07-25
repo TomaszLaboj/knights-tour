@@ -9,19 +9,20 @@ const columns: number[] = [1, 2, 3, 4, 5, 6, 7, 8];
 //-------------------------------------------------------------
 
 function App(): JSX.Element {
-  const squaresData: SquareElement[] = [];
-  createArray(squaresData);
+  const SquaresData: SquareElement[] = [];
+  createArray(SquaresData);
   
-  const [board, setBoard] = useState<SquareElement[]>(squaresData)
-  const squaresRender: JSX.Element[] = [];
   
-  const handleMoveKnight = () => {setBoard(squaresData)}
-  for (const squareElement of board) {
-    squaresRender.push(<SquareElementComponent square={squareElement} />);
-  }
+  
+  
+  
+  
   
 
-  return <div className="board">{squaresRender}</div>;
+  return (<div className="board">
+    Board
+   
+    </div>)
 }
 
 export default App;
@@ -53,28 +54,3 @@ function createArray(array: SquareElement[]): SquareElement[] {
   return array;
 }
 //-------------------------------------------------------------
-interface SquareElementProps {
-  square: SquareElement;
-}
-//-------------------------------------------------------------
-
-function SquareElementComponent(props: SquareElementProps) {
-  return (
-    <div
-      className={
-        squareEven(props.square.row, props.square.column) ? "white" : "black"
-      }
-      onClick={handleMoveKnight} 
-      key={props.square.id}
-    >
-      {props.square.piece}
-      {props.square.moveCounter === 0 ? "" : props.square.moveCounter}
-      {/* {props.square.id} */}
-    </div>
-  );
-}
-//-------------------------------------------------------------
-
-function squareEven(row: number, column: number): boolean {
-  return (row + column) % 2 === 0 ? true : false;
-}
