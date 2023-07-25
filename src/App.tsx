@@ -12,7 +12,7 @@ function App(): JSX.Element {
 
   const SquaresData: SquareElement[] = [];
   createArray(SquaresData);
-
+  const [boardState,setBoardState] = useState<SquareElement[]>(SquaresData)
   //------------------------------------------------------------- 
   interface SquareProps{
     square: SquareElement;
@@ -20,7 +20,8 @@ function App(): JSX.Element {
   //-------------------------------------------------------------
   const OneSquare = (props:SquareProps) => {
     return(
-      <div className={(props.square.row+props.square.column)%2===0?"white":"black"} key="{props.square.id}">
+      <div className={(props.square.row+props.square.column)%2===0?"white":"black"} 
+      key="{props.square.id}">
         
       
         <div>{props.square.piece}</div>
@@ -31,7 +32,7 @@ function App(): JSX.Element {
   //-------------------------------------------------------------
   const board:JSX.Element[]= [];
 
-  for(const element of SquaresData){
+  for(const element of boardState){
     board.push(<OneSquare square={element}/>)
   }
 
