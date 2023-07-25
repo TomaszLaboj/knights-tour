@@ -69,7 +69,6 @@ function SquareElementComponent(props: SquareElementProps) {
     >
       {props.square.piece}
       {props.square.moveCounter === 0 ? "" : props.square.moveCounter}
-      {/* {props.square.id} */}
     </div>
   );
 }
