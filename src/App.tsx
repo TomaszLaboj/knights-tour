@@ -20,9 +20,8 @@ function App(): JSX.Element {
   //-------------------------------------------------------------
   const OneSquare = (props:SquareProps) => {
     return(
-      <div className="square" key="{props.square.id}">
-        {props.square.row}
-        {props.square.column}
+      <div className={(props.square.row+props.square.column)%2===0?"white":"black"} key="{props.square.id}">
+        
       
         <div>{props.square.piece}</div>
         <div>{props.square.moveCounter===0?'':props.square.moveCounter}</div>
