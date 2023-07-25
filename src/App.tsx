@@ -9,7 +9,6 @@ const knight = "♞";
 //-------------------------------------------------------------
 
 function App(): JSX.Element {
-
   const SquaresData: SquareElement[] = [];
   createArray(SquaresData);
   const [boardState, setBoardState] = useState<SquareElement[]>(SquaresData);
@@ -17,17 +16,6 @@ function App(): JSX.Element {
   //-------------------------------------------------------------
   interface SquareProps {
     square: SquareElement;
-
-  const squaresData: SquareElement[] = [];
-  createArray(squaresData);
-  
-  const [board, setBoard] = useState<SquareElement[]>(squaresData)
-  const squaresRender: JSX.Element[] = [];
-  
-  // const handleMoveKnight = () => {setBoard(squaresData)}
-  for (const squareElement of board) {
-    squaresRender.push(<SquareElementComponent square={squareElement} />);
-
   }
   //-------------------------------------------------------------
   const OneSquare = (props: SquareProps) => {
@@ -91,4 +79,3 @@ function createArray(array: SquareElement[]): SquareElement[] {
   return array;
 }
 //-------------------------------------------------------------
-
