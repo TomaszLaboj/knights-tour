@@ -9,18 +9,31 @@ const columns: number[] = [1, 2, 3, 4, 5, 6, 7, 8];
 //-------------------------------------------------------------
 
 function App(): JSX.Element {
+
   const SquaresData: SquareElement[] = [];
   createArray(SquaresData);
+
+  //------------------------------------------------------------- 
   interface SquareProps{
-    square: SquareElement
+    square: SquareElement;
   }
-  const Board = (props:SquareProps) => {
+  //-------------------------------------------------------------
+  const OneSquare = (props:SquareProps) => {
     return(
-      <>
-    <div>{props.square.piece}</div>
-    <div>{props.square.moveCounter}</div>
-      </>
+      <div className="square" key="{props.square.id}">
+        {props.square.row}
+        {props.square.column}
+      
+        <div>{props.square.piece}</div>
+        <div>{props.square.moveCounter===0?'':props.square.moveCounter}</div>
+      </div>
     )
+  }
+  //-------------------------------------------------------------
+  const board:JSX.Element[]= [];
+
+  for(const element of SquaresData){
+    board.push(<OneSquare square={element}/>)
   }
 
   
@@ -32,7 +45,7 @@ function App(): JSX.Element {
   
 
   return (<div className="board">
-    Board
+    {board}
    
     </div>)
 }
