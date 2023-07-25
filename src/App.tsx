@@ -15,7 +15,7 @@ function App(): JSX.Element {
   const [board, setBoard] = useState<SquareElement[]>(squaresData)
   const squaresRender: JSX.Element[] = [];
   
-  const handleMoveKnight = () => {setBoard(squaresData)}
+  // const handleMoveKnight = () => {setBoard(squaresData)}
   for (const squareElement of board) {
     squaresRender.push(<SquareElementComponent square={squareElement} />);
   }
@@ -64,7 +64,7 @@ function SquareElementComponent(props: SquareElementProps) {
       className={
         squareEven(props.square.row, props.square.column) ? "white" : "black"
       }
-      onClick={handleMoveKnight} 
+      // onClick={handleMoveKnight} 
       key={props.square.id}
     >
       {props.square.piece}
