@@ -1,14 +1,23 @@
 import React from "react";
-import {useState} from "react";
+import { useState } from "react";
 import "./app.css";
 
 const rows: number[] = [1, 2, 3, 4, 5, 6, 7, 8];
 const columns: number[] = [1, 2, 3, 4, 5, 6, 7, 8];
-// const knight: string = "♘"
+const knight = "♞";
 
 //-------------------------------------------------------------
 
 function App(): JSX.Element {
+
+  const SquaresData: SquareElement[] = [];
+  createArray(SquaresData);
+  const [boardState, setBoardState] = useState<SquareElement[]>(SquaresData);
+
+  //-------------------------------------------------------------
+  interface SquareProps {
+    square: SquareElement;
+
   const squaresData: SquareElement[] = [];
   createArray(squaresData);
   
@@ -18,10 +27,39 @@ function App(): JSX.Element {
   // const handleMoveKnight = () => {setBoard(squaresData)}
   for (const squareElement of board) {
     squaresRender.push(<SquareElementComponent square={squareElement} />);
-  }
-  
 
-  return <div className="board">{squaresRender}</div>;
+  }
+  //-------------------------------------------------------------
+  const OneSquare = (props: SquareProps) => {
+    return (
+      <div
+        className={
+          (props.square.row + props.square.column) % 2 === 0 ? "white" : "black"
+        }
+        onClick={() => handleMovePiece(props.square)}
+        key={props.square.id}
+      >
+        <div>{props.square.piece}</div>
+        <div>
+          {props.square.moveCounter === 0 ? "" : props.square.moveCounter}
+        </div>
+      </div>
+    );
+  };
+  //-------------------------------------------------------------
+  const handleMovePiece = (clickedSquare: SquareElement) => {
+    const indexOfClickedSquare: number = boardState.indexOf(clickedSquare);
+    const tempArray: SquareElement[] = boardState;
+    tempArray[indexOfClickedSquare].piece = knight;
+    setBoardState([...tempArray]);
+    console.log(boardState);
+  };
+  const board: JSX.Element[] = [];
+
+  for (const element of boardState) {
+    board.push(<OneSquare square={element} />);
+  }
+  return <div className="board">{board}</div>;
 }
 
 export default App;
@@ -53,27 +91,4 @@ function createArray(array: SquareElement[]): SquareElement[] {
   return array;
 }
 //-------------------------------------------------------------
-interface SquareElementProps {
-  square: SquareElement;
-}
-//-------------------------------------------------------------
 
-function SquareElementComponent(props: SquareElementProps) {
-  return (
-    <div
-      className={
-        squareEven(props.square.row, props.square.column) ? "white" : "black"
-      }
-      // onClick={handleMoveKnight} 
-      key={props.square.id}
-    >
-      {props.square.piece}
-      {props.square.moveCounter === 0 ? "" : props.square.moveCounter}
-    </div>
-  );
-}
-//-------------------------------------------------------------
-
-function squareEven(row: number, column: number): boolean {
-  return (row + column) % 2 === 0 ? true : false;
-}
