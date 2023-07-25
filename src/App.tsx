@@ -1,4 +1,5 @@
 import React from "react";
+import {useState} from "react";
 import "./app.css";
 
 const rows: number[] = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -10,13 +11,15 @@ const columns: number[] = [1, 2, 3, 4, 5, 6, 7, 8];
 function App(): JSX.Element {
   const squaresData: SquareElement[] = [];
   createArray(squaresData);
-
+  
+  const [board, setBoard] = useState<SquareElement[]>(squaresData)
   const squaresRender: JSX.Element[] = [];
-
-  for (const squareElement of squaresData) {
+  
+  const handleMoveKnight = () => {setBoard(squaresData)}
+  for (const squareElement of board) {
     squaresRender.push(<SquareElementComponent square={squareElement} />);
   }
-  console.log(squaresRender);
+  
 
   return <div className="board">{squaresRender}</div>;
 }
@@ -61,6 +64,7 @@ function SquareElementComponent(props: SquareElementProps) {
       className={
         squareEven(props.square.row, props.square.column) ? "white" : "black"
       }
+      onClick={handleMoveKnight} 
       key={props.square.id}
     >
       {props.square.piece}
