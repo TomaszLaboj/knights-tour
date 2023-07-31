@@ -1,23 +1,31 @@
 import "./app.css";
-import {createArray} from "./utils/createArray"
-import {OneSquare} from "./components/OneSquare";
+import { createArray } from "./utils/createArray";
+import { OneSquare } from "./components/OneSquare";
 import { SquareElement } from "./components/OneSquare";
 import { updateSquaresArray } from "./utils/updateSquaresArray";
-import {useState} from "react"
-
+import { useEffect, useState } from "react";
 
 function App() {
-
-  const handleClick = (clickedSquare:SquareElement) => {console.log(clickedSquare.id+"was clicked")}
-  const squaresData: SquareElement[] = createArray();
+  let squaresData: SquareElement[] = createArray();
+  const [board, setBoard] = useState<SquareElement[]>(squaresData);
+  const [visitedSquaresCounter, setVisitedSquaresCounter] = useState(0);
   
-  const [board, setBoard] = useState<SquareElement[]>(squaresData)
+  const handleClick = (clickedSquare: SquareElement) => {
+    
+    squaresData = updateSquaresArray(clickedSquare,board, visitedSquaresCounter);
+    
+    setVisitedSquaresCounter(visitedSquaresCounter+1);
+    setBoard([...squaresData]);
+  };
   const squaresElementArray: JSX.Element[] = [];
-  for (const element of board) {
-    squaresElementArray.push(<OneSquare key={element.id} handleClick={handleClick} square={element} />);
-  }
   
-  return <div className="board" >{squaresElementArray}</div>;
+  for (const element of board) {
+    squaresElementArray.push(
+      <OneSquare key={element.id} handleClick={handleClick} square={element} />
+    );
+  }
+
+  return <div className="board">{squaresElementArray}</div>;
 }
 
 export default App;
