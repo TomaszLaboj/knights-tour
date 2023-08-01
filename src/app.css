@@ -1,3 +1,15 @@
+body {
+  padding-top: 60px;
+  background-color: #344e41;
+}
+
+.header {
+  text-align: center;
+  font-size: 25px;
+  color: #d8f3dc;
+  padding-bottom: 50px;
+}
+
 .board {
   display: grid;
   grid-template-rows: 50px 50px 50px 50px 50px 50px 50px 50px;
@@ -16,4 +28,27 @@
   background-color: #d8f3dc;
   font-size: 40px;
   font-weight: bold;
+}
+
+.counter {
+  font-size: 20px;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.piece {
+  text-align: center;
+}
+
+.description {
+  text-align: center;
+  font-size: 15px;
+  color: #d8f3dc;
+}
+
+.footer {
+  color: #d8f3dc;
+  position: relative;
+  text-align: center;
+  padding-top: 80px;
 }
