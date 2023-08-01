@@ -12,7 +12,7 @@ function App() {
   const [isMoveLegal, setIsMoveLegal] = useState<boolean>(true);
 
   const handleClick = (clickedSquare: SquareElement) => {
-    if (clickedSquare.moveCounter === 0) {
+    if (clickedSquare.moveCounter === 0 && clickedSquare.legalMove === true) {
       squaresData = updateSquaresArray(
         clickedSquare,
         board,
