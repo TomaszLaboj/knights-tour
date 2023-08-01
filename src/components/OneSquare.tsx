@@ -4,6 +4,7 @@ export interface SquareElement {
   column: number;
   moveCounter: number;
   piece: string;
+  legalMove: boolean;
 }
 
 interface SquareProps {

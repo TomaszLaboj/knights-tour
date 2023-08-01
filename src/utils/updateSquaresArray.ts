@@ -7,15 +7,16 @@ export function updateSquaresArray(
   squaresData: SquareElement[],
   visitedSquaresCounter: number
 ): SquareElement[] {
-  squaresData.map((square)=>{
-    if(square.piece===knight){
-      square.piece="";
+  squaresData.map((square) => {
+    if (square.piece === knight) {
+      square.piece = "";
       square.moveCounter = visitedSquaresCounter;
     }
-  })
-  const indexOfClickedSquare: number = squaresData.indexOf(clickedSquare)
+  });
+  const indexOfClickedSquare: number = squaresData.indexOf(clickedSquare);
   squaresData[indexOfClickedSquare].piece = knight;
-  console.log(squaresData)
+  squaresData[indexOfClickedSquare].legalMove = false;
+  console.log(squaresData);
 
   return squaresData;
 }

@@ -14,6 +14,7 @@ export function createArray(): SquareElement[] {
         column: col,
         moveCounter: 0,
         piece: "",
+        legalMove: true,
       });
     }
     lastId += 8;
