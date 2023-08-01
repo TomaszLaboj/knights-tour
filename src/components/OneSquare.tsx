@@ -21,8 +21,8 @@ export function OneSquare(props: SquareProps) {
       onClick={() => props.handleClick(props.square)}
       key={props.square.id}
     >
-      <div>{props.square.piece}</div>
-      <div>
+      <div className="piece">{props.square.piece}</div>
+      <div className="counter">
         {props.square.moveCounter === 0 ? "" : props.square.moveCounter}
       </div>
     </div>

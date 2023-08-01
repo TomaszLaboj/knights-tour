@@ -35,8 +35,27 @@ function App() {
 
   return (
     <>
+      <header className="header">
+        KNIGHT'S TOUR
+        <p className="description">
+          Click on any square on the board to start the game.<br></br>
+          You need to visit all squares on the board but each square can be
+          visited only once. Valid moves are shown as green circle. You don't
+          have to know chess to try to solve this puzzle. It's possible to solve
+          this board - make 64 moves.<br></br>
+          Good luck!
+        </p>
+      </header>
+      <nav>
+        <p>Buttons under development - not active - sorry!</p>
+        <button className="reset">Reset board</button>
+
+        <button className="undo">Undo move</button>
+      </nav>
+      <aside className="description"></aside>
       <div className="board">{squaresElementArray}</div>
-      {!isMoveLegal && <p>Illegal move!</p>}
+      {!isMoveLegal && <p className="description">Illegal move!</p>}
+      <footer className="footer">Developed by Tomasz 2023</footer>
     </>
   );
 }
