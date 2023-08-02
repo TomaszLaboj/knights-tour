@@ -1,7 +1,7 @@
 import { SquareElement } from "../components/OneSquare";
 
-const rows: number[] = [1, 2, 3, 4, 5, 6, 7, 8];
-const columns: number[] = [1, 2, 3, 4, 5, 6, 7, 8];
+const rows: number[] = [1, 2, 3, 4, 5];
+const columns: number[] = [1, 2, 3, 4, 5];
 
 export function createArray(): SquareElement[] {
   let lastId = 0;
