@@ -1,7 +1,6 @@
 import "./app.css";
 import { createArray } from "./utils/createArray";
-import { OneSquare } from "./components/OneSquare";
-import { SquareElement } from "./components/OneSquare";
+import { OneSquare,SquareElement } from "./components/OneSquare";
 import { updateSquaresArray } from "./utils/updateSquaresArray";
 import { useState } from "react";
 
