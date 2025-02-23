@@ -9,7 +9,7 @@ export interface SquareElement {
 
 interface SquareProps {
   square: SquareElement;
-  handleClick: (square: SquareElement) => void;
+  handleSquareClick: (square: SquareElement) => void;
 }
 
 export function OneSquare(props: SquareProps) {
@@ -18,7 +18,7 @@ export function OneSquare(props: SquareProps) {
       className={
         (props.square.row + props.square.column) % 2 === 0 ? "white" : "black"
       }
-      onClick={() => props.handleClick(props.square)}
+      onClick={() => props.handleSquareClick(props.square)}
       key={props.square.id}
     >
       <div className="piece">{props.square.piece}</div>

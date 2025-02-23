@@ -11,7 +11,7 @@ function App() {
   const [visitedSquaresCounter, setVisitedSquaresCounter] = useState(0);
   const [isMoveLegal, setIsMoveLegal] = useState<boolean>(true);
 
-  const handleClick = (clickedSquare: SquareElement) => {
+  const handleSquareClick = (clickedSquare: SquareElement) => {
     if (clickedSquare.moveCounter === 0 && clickedSquare.legalMove === true) {
       squaresData = updateSquaresArray(
         clickedSquare,
@@ -25,11 +25,20 @@ function App() {
       setIsMoveLegal(false);
     }
   };
+
+  const handleResetBoard = () => {
+    squaresData = createArray();
+    setBoard([...squaresData]);
+  };
   const squaresElementArray: JSX.Element[] = [];
 
   for (const element of board) {
     squaresElementArray.push(
-      <OneSquare key={element.id} handleClick={handleClick} square={element} />
+      <OneSquare
+        key={element.id}
+        handleSquareClick={handleSquareClick}
+        square={element}
+      />
     );
   }
 
@@ -48,7 +57,9 @@ function App() {
       </header>
       <nav>
         <p>Buttons under development - not active - sorry!</p>
-        <button className="reset">Reset board</button>
+        <button className="reset" onClick={handleResetBoard}>
+          Reset board
+        </button>
 
         <button className="undo">Undo move</button>
       </nav>
