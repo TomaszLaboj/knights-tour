@@ -56,17 +56,16 @@ function App() {
         </p>
       </header>
       <nav>
-        <p>Buttons under development - not active - sorry!</p>
         <button className="reset" onClick={handleResetBoard}>
           Reset board
         </button>
-
+        <br />
         <button className="undo">Undo move</button>
       </nav>
       <aside className="description"></aside>
       <div className="board">{squaresElementArray}</div>
       {!isMoveLegal && <p className="description">Illegal move!</p>}
-      <footer className="footer">Developed by Tomasz 2023</footer>
+      <footer className="footer">Developed by Tomasz 2023 - 2025</footer>
     </>
   );
 }
