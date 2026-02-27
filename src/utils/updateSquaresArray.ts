@@ -30,7 +30,34 @@ export function updateSquaresArray(
   return squaresData;
 }
 
-function updateLegalMoves(
+export function updateUndoMove(
+  previousSquare: SquareElement,
+  squaresData: SquareElement[],
+  visitedSquaresCounter: number
+): SquareElement[] {
+  for (const square of squaresData) {
+    if (square.piece === knight) {
+      square.piece = "";
+      square.moveCounter = 0;
+      square.legalMove = false;
+    } else {
+      square.piece = "";
+      square.legalMove = false;
+    }
+  }
+
+  const indexOfPreviousSquare: number = squaresData.indexOf(previousSquare);
+  squaresData[indexOfPreviousSquare].piece = knight;
+
+  squaresData = updateLegalMoves(
+    previousSquare.row,
+    previousSquare.column,
+    squaresData
+  );
+
+  return squaresData;
+}
+export function updateLegalMoves(
   row: number,
   column: number,
   squaresData: SquareElement[]
